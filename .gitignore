@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 tools/*.html
 .DS_Store
+
+# 本地工作记录，不入库
+.workbuddy/
