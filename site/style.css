@@ -26,8 +26,10 @@ body {
   padding: 14px 20px;
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+  text-align: center;
 }
 .site-header.home {
   display: block;

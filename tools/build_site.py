@@ -12,7 +12,7 @@ DATA_DIR = os.path.join(ROOT, "data")
 SITE_DIR = os.path.join(ROOT, "site")
 SITE_BASE = os.environ.get("SITE_BASE", "https://YOUR_USERNAME.github.io/haopian2026/").rstrip("/")
 ACCOUNT = "好片别错过"
-ACCOUNT_INTRO = "好片别错过 · 每天一部值得看的好片子"
+ACCOUNT_INTRO = "好戏即将登场，所有影视新消息，在这里抢先看。"
 PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "10"))  # 首页每页文章数
 
 TPL_ARTICLE = """<!DOCTYPE html>
