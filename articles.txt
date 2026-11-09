@@ -1,3 +1,12 @@
-# 公众号文章链接清单，一行一条
+# 公众号文章链接清单，一行一条（顺序即站点顺序，最新的放最上面）
 # 格式: URL | 标题(可选，留空则自动抓取)
-https://mp.weixin.qq.com/s/_OZ38ke5V3MOZ9Hppu7MkQ
+https://mp.weixin.qq.com/s/_OZ38ke5V3MOZ9Hppu7MkQ | 官宣！《怪奇物语》前传《异世界》定档 2028，这一次要回到 1950 年代
+https://mp.weixin.qq.com/s/jRMUekBsi6wXEw3P3BwtiQ | AI科幻动画电影《神无赐福》12月4日美国上映，你看还是不看了？
+https://mp.weixin.qq.com/s/kNq7cBUm6F_h-YlxThylAg | 史蒂文·元新剧《异端邪念》炸裂来袭！幻视加盟，《行尸走肉》父子重逢
+https://mp.weixin.qq.com/s/TPKntNWudXrzfrlGFiRxkw | 杰森·斯坦森+盖·里奇再度合体！这部让老影迷等疯了的黑帮片，终于要来了
+https://mp.weixin.qq.com/s/NGIjLSVnuXPQRp_bvO8bvw | 众神归位，诅咒苏醒：《波西·杰克逊》第三季定档11月20日，这一季要动真格了
+https://mp.weixin.qq.com/s/7uDbGSijs3QjMueZiqfoNA | 《行尸走肉：达里尔·迪克森》最终季定档2027年2月！弩哥卡妈西班牙冒险，还有一位神秘人物加入
+https://mp.weixin.qq.com/s/fDDxip7eiAvdvnUFKkvtzQ | 《饥饿游戏》里最惨的那个男人，终于要当主角了
+https://mp.weixin.qq.com/s/8qxgmeD-4tArrorxuBB8Ng | 《小丑回魂：德里故事》万圣节惊喜上线，没有预告，没有倒计时，没有宣传
+https://mp.weixin.qq.com/s/Uq5bmENBKUVpXwVnKcRJvw | 《指环王：力量之戒》第三季双十一将正式回归，索隆穿上铠甲，中土全面开战！
+https://mp.weixin.qq.com/s/cjdd66PXfBplKmvwtejOvA | 哥斯拉宇宙要变天？《帝王计划：怪兽遗产》第三季风声：换编剧、把新怪兽推上前台
