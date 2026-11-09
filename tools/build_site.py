@@ -35,6 +35,7 @@ TPL_ARTICLE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} | {account}</title>
 <meta name="description" content="{desc}">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -74,6 +75,7 @@ TPL_INDEX = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{account} - {intro}</title>
 <meta name="description" content="{account} 公众号文章精选，{intro}">
+<link rel="icon" type="image/x-icon" href="{base}favicon.ico">
 <link rel="stylesheet" href="{base}style.css">
 {head_extra}</head>
 <body>
@@ -234,6 +236,15 @@ def main():
     with open(key_path, "w", encoding="utf-8") as f:
         f.write(INDEXNOW_KEY)
     print(f"生成 {INDEXNOW_KEY}.txt  (IndexNow 验证文件)")
+
+    # 站点图标（tools/make_favicon.py 生成，母本在 assets/favicon.ico）
+    fav_src = os.path.join(ROOT, "assets", "favicon.ico")
+    if os.path.exists(fav_src):
+        with open(fav_src, "rb") as f:
+            fav = f.read()
+        with open(os.path.join(SITE_DIR, "favicon.ico"), "wb") as f:
+            f.write(fav)
+        print("复制 favicon.ico  (站点图标)")
 
 
 if __name__ == "__main__":
