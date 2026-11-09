@@ -14,6 +14,8 @@ SITE_BASE = os.environ.get("SITE_BASE", "https://YOUR_USERNAME.github.io/haopian
 ACCOUNT = "好片别错过"
 ACCOUNT_INTRO = "好戏即将登场，所有影视新消息，在这里抢先看。"
 PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "10"))  # 首页每页文章数
+# IndexNow 验证 Key（明文存放，IndexNow Key 本身就是公开的验证凭证）
+INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "5bf2867207184b91b5ae94f7d942baad")
 
 TPL_ARTICLE = """<!DOCTYPE html>
 <html lang="zh-CN">
@@ -214,6 +216,12 @@ def main():
     with open(os.path.join(SITE_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write("\n".join(sitemap))
     print(f"生成 sitemap.xml  (base: {SITE_BASE})")
+
+    # IndexNow 验证文件：https://SITE_BASE/{key}.txt，内容就是 key
+    key_path = os.path.join(SITE_DIR, f"{INDEXNOW_KEY}.txt")
+    with open(key_path, "w", encoding="utf-8") as f:
+        f.write(INDEXNOW_KEY)
+    print(f"生成 {INDEXNOW_KEY}.txt  (IndexNow 验证文件)")
 
 
 if __name__ == "__main__":

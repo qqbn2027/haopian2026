@@ -30,6 +30,7 @@ body {
   gap: 12px;
   flex-wrap: wrap;
   text-align: center;
+  justify-content: center;
 }
 .site-header.home {
   display: block;

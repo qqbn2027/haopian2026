@@ -54,6 +54,15 @@ site/                   构建产物（GitHub Pages 部署目录）
 .github/workflows/      GitHub Actions 自动构建发布
 ```
 
+## 搜索引擎收录
+
+站点接入 IndexNow（Bing、Yandex、Seznam 等支持的即时收录协议，Google 不支持、需单独走 Search Console）：
+
+- `tools/build_site.py` 会在站点根目录生成 IndexNow 验证文件 `{key}.txt`；
+- 每次 push 部署完成后，Actions 自动执行 `tools/indexnow.py`，把首页、分页页和全部文章页 URL 一次性推送给 `api.indexnow.org`；
+- 手动补推：`SITE_BASE=https://... python tools/indexnow.py`；
+- Key 由 `INDEXNOW_KEY` 环境变量或脚本内默认值控制，更换 Key 后需重新构建并部署。
+
 ## 首次部署步骤
 
 1. 在 GitHub 创建空仓库 `haopian2026`

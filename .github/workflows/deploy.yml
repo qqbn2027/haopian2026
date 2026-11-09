@@ -45,5 +45,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # 部署完成后把全站 URL 推送给 IndexNow（Bing/Yandex 等即时收录）
+      - name: Submit to IndexNow
+        run: python tools/indexnow.py
+        env:
+          SITE_BASE: ${{ steps.deployment.outputs.page_url }}
