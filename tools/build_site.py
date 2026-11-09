@@ -235,15 +235,6 @@ def main():
         f.write(INDEXNOW_KEY)
     print(f"生成 {INDEXNOW_KEY}.txt  (IndexNow 验证文件)")
 
-    # Bing 站长工具验证文件（assets/BingSiteAuth.xml -> 站点根目录）
-    bing_src = os.path.join(ROOT, "assets", "BingSiteAuth.xml")
-    if os.path.exists(bing_src):
-        with open(bing_src, "rb") as f:
-            bing = f.read()
-        with open(os.path.join(SITE_DIR, "BingSiteAuth.xml"), "wb") as f:
-            f.write(bing)
-        print("复制 BingSiteAuth.xml  (Bing 站长验证文件)")
-
 
 if __name__ == "__main__":
     main()
