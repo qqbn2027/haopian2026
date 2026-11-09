@@ -16,6 +16,16 @@ https://mp.weixin.qq.com/s/xxxxxxxx | 文章标题(可选)
 
 然后 push。GitHub Actions 会自动：抓取文章 → 下载图片到本地 → 重新构建站点 → 发布。
 
+## 列表分页
+
+首页按发布时间倒序（最新在前），每页 10 篇：
+
+- 第 1 页：`index.html`
+- 第 N 页：`page/N.html`（页码、上一页/下一页、总篇数自动生成）
+
+每页条数可通过环境变量 `PAGE_SIZE` 调整（默认 10），例如 `PAGE_SIZE=8 python tools/build_site.py`。
+文章增减后重新构建会自动重排分页、清理多余的旧分页文件。
+
 本地手动构建（可选）：
 
 ```bash
