@@ -16,6 +16,17 @@ ACCOUNT_INTRO = "好戏即将登场，所有影视新消息，在这里抢先看
 PAGE_SIZE = int(os.environ.get("PAGE_SIZE", "10"))  # 首页每页文章数
 # IndexNow 验证 Key（明文存放，IndexNow Key 本身就是公开的验证凭证）
 INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "5bf2867207184b91b5ae94f7d942baad")
+# 百度统计站点 ID（tongji.baidu.com）
+HMT_ID = os.environ.get("HMT_ID", "c9930abe29fd95e3b273fad3e4060a64")
+TPL_HMT = """<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?%s";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>""" % HMT_ID
 
 TPL_ARTICLE = """<!DOCTYPE html>
 <html lang="zh-CN">
@@ -52,7 +63,7 @@ TPL_ARTICLE = """<!DOCTYPE html>
 <footer class="site-footer">
   <p>本站内容同步自微信公众号「{account}」，版权归原作者所有。</p>
 </footer>
-</body>
+{hmt}</body>
 </html>
 """
 
@@ -87,7 +98,7 @@ TPL_INDEX = """<!DOCTYPE html>
 <footer class="site-footer">
   <p>本站内容同步自微信公众号「{account}」，版权归原作者所有。</p>
 </footer>
-</body>
+{hmt}</body>
 </html>
 """
 
@@ -167,7 +178,8 @@ def build_list_pages(arts):
         heading = "全部文章" if p == 1 else f"全部文章 · 第 {p} 页"
         html = TPL_INDEX.format(
             account=ACCOUNT, intro=ACCOUNT_INTRO, base=base,
-            head_extra=head_extra, heading=heading, items=items, pager=pager)
+            head_extra=head_extra, heading=heading, items=items, pager=pager,
+            hmt=TPL_HMT)
 
         if p == 1:
             path = os.path.join(SITE_DIR, "index.html")
@@ -196,7 +208,7 @@ def main():
         page = TPL_ARTICLE.format(
             title=a["title"], account=a["account"], intro=ACCOUNT_INTRO,
             desc=a["desc"], date=a["date"] or "",
-            content=a["content"], source=a["source"],
+            content=a["content"], source=a["source"], hmt=TPL_HMT,
         )
         path = os.path.join(SITE_DIR, "articles", f"{a['id']}.html")
         with open(path, "w", encoding="utf-8") as f:
