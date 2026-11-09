@@ -4,7 +4,7 @@
 
 ## 线上地址
 
-`https://<你的GitHub用户名>.github.io/haopian2026/`
+https://qqbn2027.github.io/haopian2026/
 
 ## 如何新增文章
 
