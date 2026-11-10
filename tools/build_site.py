@@ -246,6 +246,10 @@ def main():
             f.write(fav)
         print("复制 favicon.ico  (站点图标)")
 
+    # gh-pages 分支发布时跳过 Jekyll 处理
+    open(os.path.join(SITE_DIR, ".nojekyll"), "w").close()
+    print("生成 .nojekyll  (跳过 Jekyll)")
+
 
 if __name__ == "__main__":
     main()
