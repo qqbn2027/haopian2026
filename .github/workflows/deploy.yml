@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
@@ -31,7 +33,13 @@ jobs:
         env:
           SITE_BASE: https://${{ github.repository_owner }}.github.io/haopian2026/
 
-      # 发布到 gh-pages 分支（Pages Source 选 Deploy from a branch → gh-pages → / (root)）
+      # 通道 A：Pages Source = GitHub Actions 时走这套
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      # 通道 B：Pages Source = Deploy from a branch → gh-pages 时走这套
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -42,10 +50,25 @@ jobs:
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # 仅当 Pages Source 配成 GitHub Actions 时这一步才生效；
+      # 配成分支发布时会快速失败，continue-on-error 保证不影响整体流水线。
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+
       # 发布完成后把全站 URL 推送给 IndexNow（Bing/Yandex 等即时收录）
       - name: Submit to IndexNow
         run: |
-          sleep 30  # 等 Pages 完成 gh-pages 分支发布
+          sleep 20
           python tools/indexnow.py
         env:
           SITE_BASE: https://${{ github.repository_owner }}.github.io/haopian2026/
