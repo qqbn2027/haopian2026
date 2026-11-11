@@ -16,6 +16,13 @@ https://mp.weixin.qq.com/s/xxxxxxxx | 文章标题(可选)
 
 然后 push。GitHub Actions 会自动：抓取文章 → 下载图片到本地 → 重新构建站点 → 发布。
 
+发布采用双通道，任一通道可用即可上线（Pages 设置无需再改）：
+
+- 通道 A：构建产物推到 `gh-pages` 分支（Pages Source = Deploy from a branch → gh-pages）；
+- 通道 B：同时走 Actions Pages 部署（Pages Source = GitHub Actions）。
+
+push 后约 1 分钟可访问；若页面还是旧的，注意浏览器缓存（Ctrl+F5），并可在 Actions 页确认最新一次运行是否成功。
+
 ## 会不会重复抓取？
 
 不会。`tools/update.py` 以文章原始链接（`data/*.json` 中的 `source`）判断是否抓过：
